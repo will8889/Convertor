@@ -1,14 +1,16 @@
 from flask import Flask, redirect, request, render_template, send_from_directory
 from werkzeug.utils import secure_filename
-from os.path import join
+from os.path import join,isfile
+from os import remove,listdir,stat
+import time
 
 from conversion_methods import video_conversion as vc
 from conversion_methods import audio_conversion as ac
 from conversion_methods import image_conversion as ic
-#from conversion_methods import file_conversion as fc
+from conversion_methods import file_conversion as fc
 
-UPLOAD_FOLDER = "uploads/"
-OUTPUT_FOLDER = "output/"
+UPLOAD_FOLDER = "/home/convertorapp/Convertor/uploads"
+OUTPUT_FOLDER = "/home/convertorapp/Convertor/output"
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
@@ -60,7 +62,7 @@ def video_upload():
             file.save(join(app.config['UPLOAD_FOLDER'], filename))
 
             convertor = vc.VideoConvertor(app.config['UPLOAD_FOLDER'], app.config["OUTPUT_FOLDER"])
-            
+
             converted_filename = convertor.convert(filename, target=target_format)
             converted = True
             return render_template("index.html", converted=converted, converted_filename=converted_filename)
@@ -88,7 +90,7 @@ def audio_upload():
             print('Audio converted')
             filename = secure_filename(file.filename)
             file.save(join(app.config['UPLOAD_FOLDER'], filename))
-            
+
             convertor = ac.AudioConvertor(app.config['UPLOAD_FOLDER'], app.config["OUTPUT_FOLDER"])
             converted_filename = convertor.convert(filename, target=target_format, bitrate="high")
             converted = True
@@ -123,7 +125,6 @@ def image_upload():
             return render_template("image.html", converted=converted, converted_filename=converted_filename)
     return render_template("image.html")
 
-'''
 @app.route("/document", methods=["GET", "POST"])
 def document_upload():
     if request.method == "POST":
@@ -141,17 +142,30 @@ def document_upload():
             print('Document converted')
             filename = secure_filename(file.filename)
             file.save(join(app.config['UPLOAD_FOLDER'], filename))
-            
-            convertor = fc.FileConvertor(app.config['UPLOAD_FOLDER'], app.config["OUTPUT_FOLDER"])
-            converted_filename = convertor.convert_file(filename)
+
+            convertor = fc.convert(app.config['UPLOAD_FOLDER'], app.config["OUTPUT_FOLDER"],filename)
+            converted_filename = convertor
             converted = True
             return render_template("document.html", converted=converted, converted_filename=converted_filename)
     return render_template("document.html")
-'''
+
 
 
 @app.route('/download/<filename>')
 def download_file(filename):
+    now = time.time()
+
+    for i in listdir(app.config['OUTPUT_FOLDER']):
+        i = join(app.config['OUTPUT_FOLDER'],i)
+        if stat(i).st_mtime < now - 600:
+            if isfile(i):
+                remove(i)
+
+    for i in listdir(app.config['UPLOAD_FOLDER']):
+        i = join(app.config['UPLOAD_FOLDER'],i)
+        if stat(i).st_mtime < now - 600:
+            if isfile(i):
+                remove(i)
     return send_from_directory(app.config['OUTPUT_FOLDER'], filename)
 
 if __name__ == "__main__":
