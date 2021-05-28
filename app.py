@@ -38,16 +38,6 @@ def document_is_supported(filename):
            filename.rsplit('.', 1)[1].lower() in SUPPORTED_DOCUMENT_EXTENSIONS
 
 @app.route("/")
-@app.route('/update_server', methods=['POST'])
-def webhook():
-    if request.method == 'POST':
-        repo = git.Repo('path/to/git_repo')
-        origin = repo.remotes.origin
-        origin.pull()
-        return 'Updated PythonAnywhere successfully', 200
-    else:
-        return 'Wrong event type', 400
-
 @app.route("/video", methods=["GET", "POST"])
 def video_upload():
     if request.method == "POST":
@@ -179,5 +169,15 @@ def download_file(filename):
                 remove(i)
     return send_from_directory(app.config['OUTPUT_FOLDER'], filename)
 
+@app.route('/update_server', methods=['POST'])
+def webhook():
+    if request.method == 'POST':
+        repo = git.Repo('path/to/git_repo')
+        origin = repo.remotes.origin
+        origin.pull()
+        return 'Updated PythonAnywhere successfully', 200
+    else:
+        return 'Wrong event type', 400
+        
 if __name__ == "__main__":
     app.run(debug=True)
