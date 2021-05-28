@@ -172,7 +172,7 @@ def download_file(filename):
 @app.route('/update_server', methods=['POST'])
 def webhook():
     if request.method == 'POST':
-        repo = git.Repo('path/to/https://github.com/will8889/Convertor.git')
+        repo = git.Repo('./Converter')
         origin = repo.remotes.origin
         origin.pull()
         return 'Updated PythonAnywhere successfully', 200
