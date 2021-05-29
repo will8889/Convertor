@@ -10,8 +10,8 @@ from conversion_methods import audio_conversion as ac
 from conversion_methods import image_conversion as ic
 from conversion_methods import file_conversion as fc
 
-UPLOAD_FOLDER = "/home/convertorapp/Convertor/uploads"
-OUTPUT_FOLDER = "/home/convertorapp/Convertor/output"
+UPLOAD_FOLDER = "/home/convertorwebapp/Convertor/uploads"
+OUTPUT_FOLDER = "/home/convertorwebapp/Convertor/output"
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
