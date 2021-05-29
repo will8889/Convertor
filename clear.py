@@ -2,8 +2,8 @@ from os.path import join,isfile
 from os import remove,listdir
 
 
-UPLOAD_FOLDER = "/home/convertorapp/Convertor/uploads"
-OUTPUT_FOLDER = "/home/convertorapp/Convertor/output"
+UPLOAD_FOLDER = "/home/convertorwebapp/Convertor/uploads"
+OUTPUT_FOLDER = "/home/convertorwebapp/Convertor/output"
 
 for i in listdir(UPLOAD_FOLDER):
     i = join(UPLOAD_FOLDER,i)
