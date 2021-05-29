@@ -35,7 +35,7 @@ jobs:
       run: |
         pytest
     - name: Redeploy web app by sending post request to pythonanywhere
-      uses: distributhor/workflow-webhook@1.0.8
+      uses: distributhor/workflow-webhook@v1.0.8
       env:
         webhook_url: "https://convertorwebapp.pythonanywhere.com/update_server"
         
