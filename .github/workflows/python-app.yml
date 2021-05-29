@@ -37,5 +37,5 @@ jobs:
     - name: Redeploy web app by sending post request to pythonanywhere
       uses: muinmomin/webhook-action@v1.0.0
       with:
-        url: '{"https://convertorwebapp.pythonanywhere.com/update_server"}'
+        url: '{"convertorwebapp.pythonanywhere.com/update_server"}'
         
