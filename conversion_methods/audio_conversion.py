@@ -1,3 +1,5 @@
+# Used to convert audio file from 1 type to another
+
 from pydub import AudioSegment
 from pydub.utils import mediainfo
 
@@ -6,11 +8,12 @@ class AudioConvertor:
     def __init__(self, input_dir, output_dir):
         self.__input_dir = input_dir
         self.__output_dir = output_dir
-        self.__extensions = ["mp3","wav","ogg","flac","mp4"]
+        self.__extensions = ["mp3","wav","ogg","flac","mp4"] # Supported file types 
         self.__bitrate_low = "64k"
         self.__bitrate_medium = "128k"
         self.__bitrate_high = "256k"
      
+    # Extract file name 
     def __extract_file_name(self, name):
         temp = name.split(".")
         out = ""
@@ -21,6 +24,7 @@ class AudioConvertor:
 
         return out
 
+    # The actual convertion function
     def convert(self, file_name, target, bitrate = "high"):
         if file_name.split(".")[-1] not in self.__extensions:
             print("File type must either be mp3, wav, ogg, flac or mp4")
