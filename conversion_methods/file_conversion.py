@@ -1,4 +1,4 @@
-# Used to convert word documents from docx to pdf and vice versa
+# Used to convert a word document from docx to pdf and vice versa
 
 import subprocess
 import time
@@ -9,7 +9,7 @@ def convert(input_folder,output_folder,filename):
     if ext == "pdf": target = "docx"
     else: target = "pdf"
     converted_filename = filename.split(".")[0] + "." + target # Extract file name
-    print(ext, target, converted_filename) 
+    print(ext, target, converted_filename)
     subprocess.Popen(["abiword","--to="+target,filename],cwd = input_folder) # Calls abiword to convert file
     while isfile(input_folder + "/" + converted_filename) == False: # Waits for output file
         continue

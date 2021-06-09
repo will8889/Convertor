@@ -1,4 +1,4 @@
-# Used to convert audio file from 1 type to another
+# Used to convert an audio file from 1 type to another
 
 from pydub import AudioSegment
 from pydub.utils import mediainfo

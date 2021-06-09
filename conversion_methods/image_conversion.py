@@ -1,4 +1,4 @@
-# Used to convert image file from 1 type to another
+# Used to convert an image file from 1 type to another
 
 from PIL import Image
 
