@@ -41,8 +41,8 @@ Users can upload their desired files to the web application, choose an output fi
 ## Instructions
 
 1. Go to https://convertorwebapp.pythonanywhere.com/.
-2. Decide what type of file you are going to convert by clicking one of the flie types on the navigation bar.
+2. Decide what type of file you are going to convert by clicking one of the file types on the navigation bar.
 3. Upload your desired file. The file extension must be supported by the web application.
-4. Choose an output file extension from the drop down menu.
+4. Choose an output file extension from the drop down menu. For the document file type, there is no drop down menu because of only 2 supported formats. The web application will automatically convert the file to the other extension.
 5. Click "Upload". The web application will convert the file automatically after it has received the file from the user.
 6. When the web application finishes converting the file, the "Download" button will appear. Click the button to download the converted file.
