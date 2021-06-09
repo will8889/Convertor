@@ -8,7 +8,8 @@ class VideoConvertor:
         self.__input_dir = input_dir
         self.__output_dir = output_dir
         self.__extensions = ["mp4","mov","mkv","avi","wmv","flv"] # Supported file types
-     
+    
+    # Extract file name
     def __extract_file_name(self, name):
         temp = name.split(".")
         out = ""
