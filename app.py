@@ -10,17 +10,22 @@ from conversion_methods import audio_conversion as ac
 from conversion_methods import image_conversion as ic
 from conversion_methods import file_conversion as fc
 
+# Define upload and output folder
 UPLOAD_FOLDER = "/home/convertorwebapp/Convertor/uploads"
 OUTPUT_FOLDER = "/home/convertorwebapp/Convertor/output"
 
+# Instantiate Flask
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 app.config["OUTPUT_FOLDER"] = OUTPUT_FOLDER
+
+# Define supported extensions
 SUPPORTED_VIDEO_EXTENSIONS = {'mp4', 'mkv', 'mov', 'avi', 'wmv', 'flv'}
 SUPPORTED_AUDIO_EXTENSIONS = {'mp3', 'wav', 'ogg', 'flac', 'mp4'}
 SUPPORTED_IMAGE_EXTENSIONS = {'jpg', 'jpeg', 'tiff', 'png', 'bmp', 'eps'}
 SUPPORTED_DOCUMENT_EXTENSIONS = {'docx', 'pdf'}
 
+# Check if file type is supported
 def video_is_supported(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in SUPPORTED_VIDEO_EXTENSIONS
@@ -37,6 +42,8 @@ def document_is_supported(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in SUPPORTED_DOCUMENT_EXTENSIONS
 
+
+# Video conversion
 @app.route("/")
 @app.route("/video", methods=["GET", "POST"])
 def video_upload():
@@ -69,6 +76,7 @@ def video_upload():
             return render_template("index.html", converted=converted, converted_filename=converted_filename)
     return render_template("index.html")
 
+# Audio conversion
 @app.route("/audio", methods=["GET", "POST"])
 def audio_upload():
     if request.method == "POST":
@@ -98,6 +106,7 @@ def audio_upload():
             return render_template("audio.html", converted=converted, converted_filename=converted_filename)
     return render_template("audio.html")
 
+# Image conversion
 @app.route("/image", methods=["GET", "POST"])
 def image_upload():
     if request.method == "POST":
@@ -126,6 +135,7 @@ def image_upload():
             return render_template("image.html", converted=converted, converted_filename=converted_filename)
     return render_template("image.html")
 
+# Document conversion
 @app.route("/document", methods=["GET", "POST"])
 def document_upload():
     if request.method == "POST":
@@ -151,7 +161,7 @@ def document_upload():
     return render_template("document.html")
 
 
-
+# Download file
 @app.route('/download/<filename>')
 def download_file(filename):
     now = time.time()
@@ -169,6 +179,7 @@ def download_file(filename):
                 remove(i)
     return send_from_directory(app.config['OUTPUT_FOLDER'], filename)
 
+# Update server 
 @app.route('/update_server', methods=['POST'])
 def webhook():
     if request.method == 'POST':
