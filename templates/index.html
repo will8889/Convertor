@@ -3,16 +3,23 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Convertor</title>
+        <!-- Web application tab description -->
+        <title>Convert Your Files Now!</title>
+        <!-- Use stylesheet (css) -->
         <link rel="stylesheet" href="../static/style.css"/>
+        <!-- Use Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     </head>
+    <!-- Web application background color -->
     <body style="background-color: rgb(255, 245, 200);">
+        <!-- Web application header -->
         <nav>
+            <!-- Web application title -->
             <div class="logo">
                 <h1>Convertor</h1>
             </div>
             
+            <!-- Web application navigation bar -->
             <ul>
                 <li><a href="/video">Video</a></li>
                 <li><a href="/audio">Audio</a></li>
@@ -20,6 +27,7 @@
                 <li><a href="/document">Document</a></li>
             </ul>
             
+            <!-- Web application recycler view for mobile users -->
             <div class="menu-toggle">
                 <input type="checkbox"/>
                 <span></span>
@@ -29,14 +37,19 @@
         </nav>
         
         <main>
-            <h1>Convert Your Video Here</h1>
+            <!-- Web application video subtitle -->
+            <h1>Convert Your Video Here!</h1>
 
+            <!-- Web application main control centering styles-->
             <div class="container h-100">
                 <div class="row h-100 justify-content-center align-items-center">
                     <div class="col-10 col-md-8 col-lg-6">
+                        <!-- Web application file conversion controls -->
                         <form action="/video" method=POST enctype=multipart/form-data>
+                            <!-- Web application file selection -->
                             <input class="form-control" type=file name=file>
                             
+                            <!-- Web application drop down menu which shows supported output file extensions -->
                             <select name="format" class="form-select" aria-label="Default select example" style="margin-top: 16px">
                                 <option selected>Output format</option>
                                 <option value="mp4">mp4</option>
@@ -46,11 +59,14 @@
                                 <option value="wmv">wmv</option>
                                 <option value="flv">flv</option>
                             </select>
-
+                            
+                            <!-- Web application "Upload" button -->
                             <div class="col-md-12 text-center">
                                 <input type=submit class="btn btn-primary" value=Upload style="margin-top: 16px; margin-bottom: 16px">
                             </div>
                             
+                            <!-- Web application "Download" button -->
+                            <!-- Will appear only if there is a selected supported file which has been converted. -->
                             {% if converted %}
                             <div class="col-md-12 text-center">
                                 <a href="/download/{{ converted_filename }}" class="btn btn-success" style="text-decoration: none">Download</a>
@@ -62,6 +78,7 @@
             </div>
         </main>
 
+        <!-- Use script (js) -->
         <script src="../static/script.js"></script>
     </body>
 </html>

@@ -1,12 +1,15 @@
+/* Reset the position of every element. */
 * {
     margin: 0;
     padding: 0;
 }
 
+/* The place for the recycler view to hide for mobile users. */
 body {
     overflow-x: hidden;
 }
 
+/* Web application header styles */
 nav {
     display: flex;
     background-color: black;
@@ -16,10 +19,12 @@ nav {
     align-items: center;
 }
 
+/* Web application title styles */
 nav .logo {
     font-size: 24px;
 }
 
+/* Web application navigation bar styles */
 nav ul {
     display: flex;
     list-style: none;
@@ -28,15 +33,18 @@ nav ul {
     justify-content: space-between;
 }
 
+/* Web application navigation bar text styles */
 nav ul li a {
     color: white;
     text-decoration: none;
 }
 
+/* Web application navigation bar text hover styles */
 nav ul li a:hover {
     color: wheat;
 }
 
+/* Web application reycler view styles for mobile users */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -86,12 +94,14 @@ nav ul li a:hover {
     transform: scale(0);
 }
 
+/* Web application navigation bar styles for tablet users */
 @media screen and (max-width: 768px) {
     nav ul {
         width: 50%;
     }
 }
 
+/* Web application navigation bar styles for mobile users */
 @media screen and (max-width: 576px) {
     .menu-toggle {
         display: flex;
@@ -118,6 +128,7 @@ nav ul li a:hover {
     }
 }
 
+/* Web application subtitle styles */
 main h1 {
     font-size: 36px;
     text-align: center;
