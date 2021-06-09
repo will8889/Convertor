@@ -1,3 +1,5 @@
+# Used to convert video file from 1 type to another
+
 import ffmpeg
 
 class VideoConvertor:
@@ -5,7 +7,7 @@ class VideoConvertor:
     def __init__(self, input_dir, output_dir):
         self.__input_dir = input_dir
         self.__output_dir = output_dir
-        self.__extensions = ["mp4","mov","mkv","avi","wmv","flv"]
+        self.__extensions = ["mp4","mov","mkv","avi","wmv","flv"] # Supported file types
      
     def __extract_file_name(self, name):
         temp = name.split(".")
@@ -17,6 +19,7 @@ class VideoConvertor:
 
         return out
 
+    # The actual convertion function
     def convert(self, file_name, target):
         if file_name.split(".")[-1] not in self.__extensions:
             print("File type must either be mp4, mov, mkv, avi, wmv, or flv")

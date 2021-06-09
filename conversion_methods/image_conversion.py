@@ -1,3 +1,5 @@
+# Used to convert image file from 1 type to another
+
 from PIL import Image
 
 class ImageConvertor:
@@ -5,8 +7,9 @@ class ImageConvertor:
     def __init__(self, input_dir, output_dir):
         self.__input_dir = input_dir
         self.__output_dir = output_dir
-        self.__extensions = ["jpg","jpeg","tiff","bmp","png","eps"]
+        self.__extensions = ["jpg","jpeg","tiff","bmp","png","eps"] # Supported file types
      
+    # Extract file name
     def __extract_file_name(self, name):
         temp = name.split(".")
         out = ""
@@ -17,6 +20,7 @@ class ImageConvertor:
 
         return out
 
+    # The actual conversion function
     def convert(self, file_name, target):
         if file_name.split(".")[-1] not in self.__extensions:
             print("File type must either be jpg, jpeg, tiff, bmp, png or eps")

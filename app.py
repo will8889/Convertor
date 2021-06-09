@@ -5,6 +5,7 @@ from os import remove,listdir,stat
 import time
 import git
 
+# Import conversion methods
 from conversion_methods import video_conversion as vc
 from conversion_methods import audio_conversion as ac
 from conversion_methods import image_conversion as ic
