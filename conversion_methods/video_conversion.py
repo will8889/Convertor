@@ -39,7 +39,6 @@ class VideoConvertor:
             .run()
             )
             return self.__extract_file_name(file_name) + "." + target 
-            return self.__extract_file_name(file_name) + "." + target 
 
     def set_dir(self, input_dir = None, output_dir = None):
         if input_dir != None:
