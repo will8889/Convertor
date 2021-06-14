@@ -14,7 +14,6 @@ Users can upload their desired files to the web application, choose an output fi
 * mov
 * avi
 * wmv
-* flv
 
 ### Audio
 

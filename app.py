@@ -21,7 +21,7 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 app.config["OUTPUT_FOLDER"] = OUTPUT_FOLDER
 
 # Define supported extensions
-SUPPORTED_VIDEO_EXTENSIONS = {'mp4', 'mkv', 'mov', 'avi', 'wmv', 'flv'}
+SUPPORTED_VIDEO_EXTENSIONS = {'mp4', 'mkv', 'mov', 'avi', 'wmv'}
 SUPPORTED_AUDIO_EXTENSIONS = {'mp3', 'wav', 'ogg', 'flac', 'mp4'}
 SUPPORTED_IMAGE_EXTENSIONS = {'jpg', 'jpeg', 'tiff', 'png', 'bmp', 'eps'}
 SUPPORTED_DOCUMENT_EXTENSIONS = {'docx', 'pdf'}

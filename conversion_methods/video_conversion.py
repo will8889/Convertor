@@ -7,7 +7,7 @@ class VideoConvertor:
     def __init__(self, input_dir, output_dir):
         self.__input_dir = input_dir
         self.__output_dir = output_dir
-        self.__extensions = ["mp4","mov","mkv","avi","wmv","flv"] # Supported file types
+        self.__extensions = ["mp4","mov","mkv","avi","wmv"] # Supported file types
     
     # Extract file name
     def __extract_file_name(self, name):
@@ -23,10 +23,10 @@ class VideoConvertor:
     # The actual conversion function
     def convert(self, file_name, target):
         if file_name.split(".")[-1] not in self.__extensions:
-            print("File type must either be mp4, mov, mkv, avi, wmv, or flv")
+            print("File type must either be mp4, mov, mkv, avi, or wmv")
 
         elif target not in self.__extensions:
-            print("Target file type must either be mp4, mov, mkv, avi, wmv, or flv")
+            print("Target file type must either be mp4, mov, mkv, avi, or wmv")
 
         else:
             file_dir = self.__input_dir + "/" + file_name 
