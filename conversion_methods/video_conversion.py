@@ -35,7 +35,8 @@ class VideoConvertor:
             (
             ffmpeg
             .input(file_dir)
-            .output(converted_dir)
+            .output(converted_dir, strict='-2')
+            .overwrite_output()
             .run()
             )
             return self.__extract_file_name(file_name) + "." + target 
