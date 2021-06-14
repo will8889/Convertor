@@ -32,17 +32,13 @@ class VideoConvertor:
             file_dir = self.__input_dir + "/" + file_name 
             temp_name = self.__extract_file_name(file_name)
             converted_dir = self.__output_dir + "/" + temp_name + "." + target
-            try:
-                (
-                ffmpeg
-                .input(file_dir)
-                .output(converted_dir)
-                .run()
-                )
-            except ffmpeg.Error as e:
-                print('stdout:', e.stdout.decode('utf8'))
-                print('stderr:', e.stderr.decode('utf8'))
-                raise e
+            (
+            ffmpeg
+            .input(file_dir)
+            .output(converted_dir)
+            .run()
+            )
+            return self.__extract_file_name(file_name) + "." + target 
             return self.__extract_file_name(file_name) + "." + target 
 
     def set_dir(self, input_dir = None, output_dir = None):
