@@ -165,19 +165,6 @@ def document_upload():
 # Download file
 @app.route('/download/<filename>')
 def download_file(filename):
-    now = time.time()
-
-    for i in listdir(app.config['OUTPUT_FOLDER']):
-        i = join(app.config['OUTPUT_FOLDER'],i)
-        if stat(i).st_mtime < now - 600:
-            if isfile(i):
-                remove(i)
-
-    for i in listdir(app.config['UPLOAD_FOLDER']):
-        i = join(app.config['UPLOAD_FOLDER'],i)
-        if stat(i).st_mtime < now - 600:
-            if isfile(i):
-                remove(i)
     return send_from_directory(app.config['OUTPUT_FOLDER'], filename)
 
 # Update server 
