@@ -102,7 +102,7 @@ def audio_upload():
             file.save(join(app.config['UPLOAD_FOLDER'], filename))
 
             convertor = ac.AudioConvertor(app.config['UPLOAD_FOLDER'], app.config["OUTPUT_FOLDER"])
-            converted_filename = convertor.convert(filename, target=target_format, bitrate="high")
+            converted_filename = convertor.convert(filename, target=target_format, bitrate="medium")
             converted = True
             return render_template("audio.html", converted=converted, converted_filename=converted_filename)
     return render_template("audio.html")
