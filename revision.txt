@@ -1,3 +1,26 @@
 Revisions:
 - Adjusted audio conversion to make it run faster
 - Adjusted daily clear time to 4am to avoid 'accidents'
+
+The 'accident':
+this happen because we set it up to remove all file in the upload and output
+folder since we use pythonanywhere for free and the storage is limited so we
+set up a code in test.py where we use the task function of pythonanywhere so
+the server will run it 1 time a day. Since the time zone is different in the
+website, the clear.py run in 3 AM in the server which is 10 AM in WIB when we
+are presenting our application, the converted file ended up deleted which is 
+why we got an error where the url is not found.
+
+CI/CD with github action:
+Everytime there is a push in this convertor repo, the python-app.yml will run.
+The CI will testing the installation of dependecies by using the requirement.txt,
+test the syntax using python library flake8, and test the app.py by using pytest 
+to test one of the function in it. If all three works without any error, it will 
+start the CD process which is the deployment where it will send a POST request 
+with webhook to convertorwebapp.pythonanywhere/update_server where it will receive 
+and start to do a git pull. The next thing to do is to click reload button in the 
+pythonanywhere web so to make it reload automatically, we create post-merge file 
+with a bash command to reload the website in the .git/hooks folder where it will 
+run everytime a merge happening. This works because git pull is basicly a 
+fetch + merge and we just need to use a bash command in the pythonanywhere to make 
+the program executeable.
