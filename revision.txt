@@ -1,0 +1,3 @@
+Revisions:
+- Adjusted audio conversion to make it run faster
+- Adjusted daily clear time to 4am to avoid 'accidents'
